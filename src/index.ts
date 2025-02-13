@@ -1,10 +1,14 @@
 import { z } from 'zod'
 import { Agent } from '@openserv-labs/sdk'
+import express from 'express';
 import { generateMusic, generateVideo } from './lib/replicate'
 import { combineAudioAndVideo } from './lib/videoProcessor'
 import 'dotenv/config'
-
-
+const app = express();
+const port = process.env.PORT || 7378;
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'healthy', time: new Date().toISOString() });
+});
 const agent = new Agent({
   systemPrompt: 'You can write a song and generate musics about a given parameters and refenced song file. ',
 })
@@ -384,6 +388,8 @@ export async function startMusicVideoCreation(topic: string) {
   await createMusicVideoWorkflow(topic, uuid);
   return uuid;
 }
-
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 // Start the agent's HTTP server
 agent.start()
