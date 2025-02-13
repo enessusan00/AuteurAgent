@@ -6,7 +6,7 @@ import { combineAudioAndVideo } from './lib/videoProcessor'
 import 'dotenv/config'
 const app = express();
 const port = process.env.PORT || 7378;
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy', time: new Date().toISOString() });
 });
 const agent = new Agent({
@@ -393,4 +393,4 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 // Start the agent's HTTP server
-agent.start()
+// agent.start()
