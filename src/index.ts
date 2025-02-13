@@ -6,7 +6,7 @@ import { combineAudioAndVideo } from './lib/videoProcessor'
 import 'dotenv/config'
 const app = express();
 const port = process.env.PORT || 7378;
-app.get('/health', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ status: 'healthy', time: new Date().toISOString() });
 });
 const agent = new Agent({
