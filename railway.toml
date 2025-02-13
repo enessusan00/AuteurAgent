@@ -1,21 +1,15 @@
-[
-build
-]
+[build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
-[
-deploy
-]
+[deploy]
 startCommand = "npm start"
 healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
 
-[
-deploy.healthcheck
-]
+[deploy.healthcheck]
 path = "/"
 interval = "30s"
 timeout = "10s"
