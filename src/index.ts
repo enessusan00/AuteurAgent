@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 });
 const agent = new Agent({
   systemPrompt: 'You can write a song and generate musics about a given parameters and refenced song file. ',
+  port: 7378,
 })
 // Add writeSong capability
 agent.addCapability({
